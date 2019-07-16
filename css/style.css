@@ -1,0 +1,32 @@
+body {
+    background: url("../assets/bar-bg.jpeg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    
+  }
+  .ui-page {
+    background: transparent;
+}
+.ui-content{
+    background: transparent;
+}
+h1 {
+    color: cyan;
+    font-family: "Courier New", Courier, monospace !important ;
+    font-size: 20px !important;
+    text-align: left !important;
+    margin-left: 15px !important;
+}
+
+.ui-page .ui-header {
+    background: #1f2833 !important;
+    border-color: #1f2833 !important;
+    text-align: left !important;
+}
+
+.ui-page .ui-footer {
+    background: #1f2833 !important;
+    border-color: #1f2833 !important;
+    text-align: left !important;
+}
