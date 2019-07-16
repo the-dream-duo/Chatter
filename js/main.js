@@ -1,5 +1,3 @@
-
-
 console.log("ready for location");
 var oldLat = "";
 var oldLong = "";
@@ -36,7 +34,7 @@ function grabFirstPosition() {
     } else {
         alert("Geolocation API is not supported in your browser.");
     }
-    dataRef.ref().push({
+    db.ref().push({
         username: username,
         longitude: longitude,
         latitude: latitude,
@@ -71,7 +69,7 @@ function watchPosition() {
         oldLong = longitude;
 
 
-        dataRef.ref().set({
+        db.ref().set({
             username: username,
             longitude: longitude,
             latitude: latitude,
