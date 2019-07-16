@@ -17,7 +17,7 @@ h1 {
     font-size: 20px !important;
     text-align: left !important;
     margin-left: 15px !important;
-    margin-right: 205px !important;
+    margin-right: 10% !important;
     float: left !important
 
 }
@@ -31,6 +31,7 @@ h1 {
     right: 15px !important;
     text-align: right !important;
     margin-right: 15px !important;
+    margin-left: 180px !important;
 }
 .ui-page .ui-header {
     background: #1f2833 !important;
@@ -67,4 +68,9 @@ h1 {
 .chatsText {
     border-top: white solid 2px !important;
     padding-top: 10px;
+}
+
+#Logout:hover {
+    cursor: pointer;
+    background-color: red;
 }
