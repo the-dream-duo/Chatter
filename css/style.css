@@ -17,8 +17,21 @@ h1 {
     font-size: 20px !important;
     text-align: left !important;
     margin-left: 15px !important;
-}
+    margin-right: 205px !important;
+    float: left !important
 
+}
+#welcome {
+    color: cyan !important;
+    font-size: 35px !important;
+}
+#Logout {
+    color: cyan !important;
+    font-size: 20px !important;
+    right: 15px !important;
+    text-align: right !important;
+    margin-right: 15px !important;
+}
 .ui-page .ui-header {
     background: #1f2833 !important;
     border-color: #1f2833 !important;
@@ -33,7 +46,10 @@ h1 {
 #chatsDiv {
     padding-top: 20px;
     height: 140px;
-    border-bottom: white solid 2px;
+    background: #1f2833 !important;
+    border-color: #1f2833 !important;
+    border-bottom: white solid 2px !important;
+    
 }
 #pendingDiv {
     padding-top: 20px;
@@ -43,4 +59,12 @@ h1 {
     font-size: 25px !important;
     font-family: sans-serif;
     color: #FFFFFF !important;
+    width: 100% !important;
+    margin-left: 0px !important;
+    padding-left: 10px !important;
+
+}
+.chatsText {
+    border-top: white solid 2px !important;
+    padding-top: 10px;
 }
