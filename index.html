@@ -51,15 +51,14 @@ firebase.initializeApp(config);
 
 var dataRef = firebase.database();
 
-var username = "chase";
+var username = "";
 
 $(document).ready(function () {
     console.log("ready!");
-    grabFirstPosition();
-
     // var test="this failed to keep changes";
     $("#loginButton").click(function () {
-        username = $("#userEmail").text();
+        event.preventDefault();
+        username = $("#userEmail").val();
         console.log(username);
         window.location.href = "#home"
         if(username != ""){
@@ -67,7 +66,7 @@ $(document).ready(function () {
     }
 
     })
-    var myVar = setInterval(myTimer, 30000);
+    var myVar = setInterval(myTimer, 5000);
     function myTimer() {
         if (username != ""){
         watchPosition();
@@ -104,16 +103,14 @@ $(document).ready(function () {
                             </span> -->
 
                     <div class="wrap-input100">
-                        <input class="input100" type="text" name="email" id="userEmail">
-                        <span class="focus-input100" data-placeholder="Username"></span>
+                        <input class="input100" type="text" name="email"  id="userEmail" placeholder="Username">
                     </div>
 
                     <div class="wrap-input100" data-validate="Enter password">
                         <span class="btn-show-pass">
                             <i class="zmdi zmdi-eye"></i>
                         </span>
-                        <input class="input100" type="text" name="pass">
-                        <span class="focus-input100" data-placeholder="Password"></span>
+                        <input class="input100" type="text" name="pass" placeholder="Password">
                     </div>
 
                     <div class="container-login100-form-btn">
