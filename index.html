@@ -32,20 +32,52 @@
     <link rel="stylesheet" type="text/css" href="./css/util.css">
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     <!--===============================================================================================-->
-  
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+
+    <script src="./geolib/lib/index.js"></script>
 
     <script>
-        $(document).ready(function () {
-            console.log("ready!");
 
-            // var test="this failed to keep changes";
-            // $("#changeText").click( function() {
-            //     test="This keep the changes across pages";
-            // })
-            // $("#logIt").click( function() {
-            //     console.log(test);
-            // })
-        });
+
+var config = {
+    apiKey: "AIzaSyCPRF9swfkI34M93ZTNyOKXvvgAoRju2PA",
+    authDomain: "portfoliocsv.firebaseapp.com",
+    databaseURL: "https://portfoliocsv.firebaseio.com",
+    projectId: "portfoliocsv",
+    storageBucket: "portfoliocsv.appspot.com",
+    messagingSenderId: "186318920720"
+};
+firebase.initializeApp(config);
+
+var dataRef = firebase.database();
+
+var username = "";
+
+$(document).ready(function () {
+    console.log("ready!");
+
+    // var test="this failed to keep changes";
+    $("#loginButton").click(function () {
+        username = $("#userEmail").text();
+        console.log(username);
+        window.location.href = "#home"
+        if(username != ""){
+        grabFirstPosition();
+    }
+
+    })
+    var myVar = setInterval(myTimer, 30000);
+    function myTimer() {
+        if (username != ""){
+        watchPosition();
+        }
+    }
+
+});
+
+// Create a variable to reference the database
+       
+     
     </script>
 
 </head>
@@ -60,50 +92,50 @@
         </div><!-- /header -->
 
         <div role="main" class="ui-content">
-           
-                    <div class="wrap-login100">
-                        <form class="login100-form validate-form">
-                            <span class="login100-form-title p-b-26" id="welcome">
-                                Welcome to Chatter!
-                            </span>
-                            <span class="login100-form-title p-b-48">
+
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-title p-b-26" id="welcome">
+                        Welcome to Chatter!
+                    </span>
+                    <!-- <span class="login100-form-title p-b-48">
                                 <i class="zmdi zmdi-font"></i>
-                            </span>
+                            </span> -->
 
-                            <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-                                <input class="input100" type="text" name="email">
-                                <span class="focus-input100" data-placeholder="Email"></span>
-                            </div>
-
-                            <div class="wrap-input100 validate-input" data-validate="Enter password">
-                                <span class="btn-show-pass">
-                                    <i class="zmdi zmdi-eye"></i>
-                                </span>
-                                <input class="input100" type="password" name="pass">
-                                <span class="focus-input100" data-placeholder="Password"></span>
-                            </div>
-
-                            <div class="container-login100-form-btn">
-                                <div class="wrap-login100-form-btn">
-                                    <div class="login100-form-bgbtn"></div>
-                                    <button class="login100-form-btn">
-                                        Login
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="text-center p-t-115">
-                                <span class="txt1">
-                                    Don’t have an account?
-                                </span>
-
-                                <a class="txt2" href="#sign-up">
-                                    Sign Up
-                                </a>
-                            </div>
-                        </form>
+                    <div class="wrap-input100">
+                        <input class="input100" type="text" name="email" id="userEmail">
+                        <span class="focus-input100" data-placeholder="Username"></span>
                     </div>
-        
+
+                    <div class="wrap-input100" data-validate="Enter password">
+                        <span class="btn-show-pass">
+                            <i class="zmdi zmdi-eye"></i>
+                        </span>
+                        <input class="input100" type="text" name="pass">
+                        <span class="focus-input100" data-placeholder="Password"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button id="loginButton" class="login100-form-btn">
+                                Login
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="text-center p-t-115">
+                        <span class="txt1">
+                            Don’t have an account?
+                        </span>
+
+                        <a class="txt2" href="#sign-up">
+                            Sign Up
+                        </a>
+                    </div>
+                </form>
+            </div>
+
 
 
             <div id="dropDownSelect1"></div>
@@ -130,13 +162,13 @@
                 <form class="login100-form validate-form">
 
                     <div class="wrap-input100 validate-input">
-                            <input class="input100" type="text" name="fName">
-                            <span class="focus-input100" data-placeholder="First Name"></span>
-                        </div>
+                        <input class="input100" type="text" name="fName">
+                        <span class="focus-input100" data-placeholder="First Name"></span>
+                    </div>
                     <div class="wrap-input100 validate-input">
-                            <input class="input100" type="text" name="lName">
-                            <span class="focus-input100" data-placeholder="Last Name"></span>
-                        </div>
+                        <input class="input100" type="text" name="lName">
+                        <span class="focus-input100" data-placeholder="Last Name"></span>
+                    </div>
 
                     <div class="wrap-input100 validate-input">
                         <input class="input100" type="text" name="email">
@@ -151,9 +183,9 @@
                         <span class="focus-input100" data-placeholder="Password"></span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Enter password">
-                            <span class="btn-show-pass">
-                                    <i class="zmdi zmdi-eye"></i>
-                                </span>
+                        <span class="btn-show-pass">
+                            <i class="zmdi zmdi-eye"></i>
+                        </span>
                         <input class="input100" type="password" name="confirmPass">
                         <span class="focus-input100" data-placeholder="Confirm Password"></span>
                     </div>
@@ -167,10 +199,10 @@
                         </div>
                     </div>
 
-                    <div class="text-center p-t-115">
-                        <span class="txt1">
+                    <div class="text-center p-t-15">
+                        <p class="txt1">
                             Already have an account?
-                        </span>
+                        </p>
 
                         <a class="txt2" href="#login">
                             Back to Login
@@ -185,21 +217,51 @@
         </div> -->
     </div><!-- /page -->
 
-<!--===============================================================================================-->
-<script src="./assets/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="./assets/vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="./assets/vendor/bootstrap/js/popper.js"></script>
-	<script src="./assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="./assets/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="./assets/vendor/daterangepicker/moment.min.js"></script>
-	<script src="./assets/vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="./assets/vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
+
+    <!-- Start of Home page -->
+    <div data-role="page" id="home">
+
+        <div data-role="header" id="header">
+            <h1>Chatter</h1>
+        </div><!-- /header -->
+        <div id="chatsDiv">
+            <h1 id="chatsHeader">Chats</h1>
+        </div>
+        <div id="chatsDiv">
+            <h1 id="chatsHeader">People Near You</h1>
+        </div>
+        <div id="pendingDiv">
+            <h1 id="chatsHeader">Pending Chat Requests</h1>
+        </div>
+        <div role="main" class="ui-content">
+
+
+
+
+
+        </div><!-- /content -->
+
+        <!-- <div data-role="footer" data-position="fixed">
+            <h4>Page Footer</h4>
+        </div> -->
+    </div><!-- /page -->
+
+
+    <!--===============================================================================================-->
+    <script src="./assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="./assets/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="./assets/vendor/bootstrap/js/popper.js"></script>
+    <script src="./assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="./assets/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="./assets/vendor/daterangepicker/moment.min.js"></script>
+    <script src="./assets/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="./assets/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
 
 
 
