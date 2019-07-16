@@ -4,12 +4,17 @@
 		xmlns:gap	= "http://phonegap.com/ns/1.0"
 		id 			= "com.chasev.chatter"
 		versionCode = "1"
-		version		= "1.0.0"
+		version		= "1.0.0" >
 		
 		<name>Chatter</name>
+
 		<description>The Chat App</description>
-		<author href = "https://csvernon.github.io/UpdatedPortfolio/">
+
+		<author href = "https://csvernon.github.io/UpdatedPortfolio/" email = "csvernon@ncsu.edu">
 			Chase Vernon
 		</author>
+
+		<preference name = "orientation" value = "portrait"/>
+
 		</widget>
 		
